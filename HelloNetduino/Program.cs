@@ -13,8 +13,8 @@ namespace HelloNetduino
     {
         public static void Main()
         {
-            // write your code here
 
+            Debug.Print("Hello World");
 
         }
 
