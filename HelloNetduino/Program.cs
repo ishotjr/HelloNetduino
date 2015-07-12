@@ -18,13 +18,22 @@ namespace HelloNetduino
 
             // blink LED
             OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
+            // note: no glitch filtering
+            InputPort button = new InputPort(Pins.ONBOARD_BTN, false, Port.ResistorMode.Disabled);
+            bool buttonState = false;
 
             while(true)
             {
-                led.Write(true);
-                Thread.Sleep(250);
-                led.Write(false);
-                Thread.Sleep(250);
+                buttonState = button.Read();
+
+                // only blink while button is pressed
+                if (buttonState)
+                {
+                    led.Write(true);
+                    Thread.Sleep(250);
+                    led.Write(false);
+                    Thread.Sleep(250);
+                }
             }
         }
 
