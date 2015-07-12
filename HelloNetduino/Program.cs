@@ -16,6 +16,16 @@ namespace HelloNetduino
 
             Debug.Print("Hello World");
 
+            // blink LED
+            OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
+
+            while(true)
+            {
+                led.Write(true);
+                Thread.Sleep(250);
+                led.Write(false);
+                Thread.Sleep(250);
+            }
         }
 
     }
